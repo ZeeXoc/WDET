@@ -1,1 +1,59 @@
 <a href="javascript%3A%0Avar%20head%20%3D%20document.getElementsByTagName('head')%5B0%5D%3B%0Afunction%20injectJs(url)%20%7B%0Alet%20script%20%3D%20document.createElement('script')%3B%0Ascript.type%20%3D%20'text%2Fjavascript'%3B%0Asabout:blankcript.src%20%3D%20url%3B%0Ahead.appendChild(script)%3B%0A%7DinjectJs('http%3A%2F%2Flocalhost%3A8800%2Fpublic%2FWDET%2Finject.js')">a</a>
+
+
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>三级下拉菜单导航栏</title>
+</head>
+<body bgcolor="aliceblue">
+<style>
+    #WSTP ul li{
+        display: inline-block;
+        width: 5em;
+        border: aquamarine 2px solid;
+        text-align: center;
+    }
+    .p-menu-1>ul {
+        display: none;
+    }
+
+    .p-menu-1:hover>ul {
+        display: block;
+        position: absolute;
+        left: auto;
+    }
+
+    .p-menu-2>ul {
+        display: none;
+    }
+    .p-menu-2:hover>ul {
+        display: block;
+        position: absolute;
+        margin-left: 0.1em;
+        left: auto;
+    }
+
+</style>
+<div id="WSTP">
+    <ul>
+        <li class="p-menu-1">
+            <span>插入</span>
+            <ul>
+                <li class="p-menu-2">
+                    <span>文字</span>
+                    <ul>
+                        <li>dd</li>
+                        <li>dddd</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>s</li>
+    </ul>
+</div>
+</body>
+</html>
+
+</html>
