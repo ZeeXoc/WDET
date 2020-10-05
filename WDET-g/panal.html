@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <style>
     #WSTP [onclick] {
         cursor: pointer;
@@ -64,12 +65,12 @@
     }
 
 </style>
-<div id='WSTP'>
+<div id="WSTP">
     <ul>
-        <li class='p-menu-1'>
+        <li class="p-menu-1">
             <span>常用</span>
             <ul>
-                <li class='p-menu-2'><span>字号</span>
+                <li class="p-menu-2"><span>字号</span>
                     <ul>
                         <li onclick='WIKIDOT.Editor.buttons.heading(event, 1);'>h1</li>
                         <li onclick='WIKIDOT.Editor.buttons.heading(event, 2);'>h2</li>
@@ -80,7 +81,7 @@
                         <li onclick='WDET.paste(`[[size 120%]]`,`[[size]]`)'>相对大小</li>
                     </ul>
                 </li>
-                <li class='p-menu-2'><span>字样</span>
+                <li class="p-menu-2"><span>字样</span>
                     <ul>
                         <li onclick='WIKIDOT.Editor.buttons.bold(event);'>粗体</li>
                         <li onclick='WIKIDOT.Editor.buttons.italic(event);'>斜体</li>
@@ -93,7 +94,7 @@
                         <li onclick='WIKIDOT.Editor.buttons.raw(event);'>原始文字</li>
                     </ul>
                 </li>
-                <li class='p-menu-2'><span>快捷内容</span>
+                <li class="p-menu-2"><span>快捷内容</span>
                     <ul>
                         <li onclick='WIKIDOT.Editor.buttons.hr(event);'>水平线</li>
                         <li onclick='WDET.paste(`█`)'>黑条</li>
@@ -101,7 +102,7 @@
                         <li onclick='WDET.paste(`[[[`,`]]]`)'>链接</li>
                     </ul>
                 </li>
-                <li class='p-menu-2'><span>结构</span>
+                <li class="p-menu-2"><span>结构</span>
                     <ul>
                         <li onclick='WDET.paste(`[[=]]\n`,`[[/=]]`)'>居中</li>
                         <li onclick='WIKIDOT.Editor.buttons.quote(event);'>引用</li>
@@ -122,11 +123,17 @@
                 </li>
             </ul>
         </li>
-        <li class='p-menu-1'><span>模组</span>
+        <li class="p-menu-1"><span>模组</span>
             <ul>
                 <li onclick='WDET.paste(`[[include component:image-block name=@图源 |caption=@描述]]`)'>插图</li>
                 <li onclick='WDET.paste(`[[module ListUsers users="."]]`,`[[/module]]`)'>ListUser</li>
                 <li onclick='WDET.paste(`[[module ListPages separate="no" tags="@tags" order="created_at"]]`,`\n[[/module]]\n`)'>ListPages</li>
+            </ul>
+        </li>
+        <li class="p-menu-1"><span>插件</span>
+            <ul>
+                <li onclick='WDET.injectLocal("WIE")' title="by Wikidot">编辑器1</li>
+                <li onclick='WDET.injectLocal("WSE")' title="by 7happy7">编辑器2</li>
             </ul>
         </li>
     </ul>

@@ -2,7 +2,7 @@ if (typeof (window.WDET) == "undefined") {
     window.jq = jQuery;
 }
 window.WDET = {
-    ROOT: "http://localhost/public/WDET-g/",
+    ROOT: "https://github.com/ZeeXoc/WDET/tree/master/WDET-g/",
     paste: function (v1, v2) {//该方法来自7happy7的Wikidot Sandbox Editor,CC-BY-SA
         let t = document.querySelector("#edit-page-textarea");
         let all = t.value;
@@ -18,12 +18,22 @@ window.WDET = {
             t.value = all.substr(0, start) + v1 + all.substr(start, all.length);
         }
     },
-    inject: function (url) {
+    injectJs: function (url) {
         let script = jq("<script>", {
             type: "text/javascript",
             src: url,
         });
         script.appendTo("head");
+    },
+    injectLocal: function (short) {
+        switch (this.source[short].type) {
+            case "js":
+                this.injectJs(this.ROOT + this.source[short].url);
+                break;
+            default:
+                console.error("Cannot find WDET.source." + short);
+                break;
+        }
     },
     init: function () {
         try {
@@ -47,20 +57,43 @@ window.WDET = {
                 }
             }
         }else {
-            for (let script in this.scripts) {
-                this.inject(this.ROOT + WDET.scripts[script].url);
-            }
+            /*for (let script in this.scripts) {
+                this.injectJs(this.ROOT + WDET.scripts[script].url);
+            }*/
+
+            this.injectLocal("WSTP");
         }
     },
-    scripts: {
+    source: {
         WSTP: {
+            type: "js",
+            url: "scripts/WSTP.js",
+            version: "1.0.1",
+
             name: "Wikidot Sandbox Tools Panal",
             short: "WSTP",
             auther: "ZeeXoc",
             homepage: "http://github.com/ZeeXoc",
+        },
+        WIE: {
+            type: "js",
+            url: "scripts/WIE.js",
             version: "1.0.1",
 
-            url: "scripts/WSTP.js"
+            name: "Wikidot Improved Editor",
+            short: "WIE",
+            auther: "unknow",
+            homepage: "http://extention.Wikidot.com",
+        },
+        WSE: {
+            type: "js",
+            url: "scripts/WSE.js",
+            version: "1.0.1",
+
+            name: "Wikidot Sandbox Editor",
+            short: "WSE",
+            auther: "7happy7",
+            homepage: "http://github.com/7happy7/wikidot-sandbox-editor",
         }
     }
 }
