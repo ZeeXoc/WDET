@@ -1,59 +1,140 @@
-<a href="javascript%3A%0Avar%20head%20%3D%20document.getElementsByTagName('head')%5B0%5D%3B%0Afunction%20injectJs(url)%20%7B%0Alet%20script%20%3D%20document.createElement('script')%3B%0Ascript.type%20%3D%20'text%2Fjavascript'%3B%0Asabout:blankcript.src%20%3D%20url%3B%0Ahead.appendChild(script)%3B%0A%7DinjectJs('http%3A%2F%2Flocalhost%3A8800%2Fpublic%2FWDET%2Finject.js')">a</a>
-
-
-<!DOCTYPE>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>三级下拉菜单导航栏</title>
-</head>
-<body bgcolor="aliceblue">
+<meta charset="UTF-8">
 <style>
-    #WSTP ul li{
+    #WSTP [onclick] {
+        cursor: pointer;
+    }
+
+    #WSTP ul {
+        letter-spacing: -1em;
+        line-height: 1.5em;
+        cursor: default;
+    }
+
+    #WSTP ul li {
         display: inline-block;
-        width: 5em;
-        border: aquamarine 2px solid;
+        min-width: 5em;
+        border-bottom: #404040 0.5px solid;
+        margin: 0;
         text-align: center;
-    }
-    .p-menu-1>ul {
-        display: none;
+        letter-spacing: normal;
     }
 
-    .p-menu-1:hover>ul {
-        display: block;
-        position: absolute;
-        left: auto;
+    #WSTP ul li:hover {
+        color: #ffffff;
+        background-color: #404040;
     }
 
-    .p-menu-2>ul {
-        display: none;
+    #WSTP > ul > li {
+        color: #cecece;
+        background-color: #7d7d7d;
     }
-    .p-menu-2:hover>ul {
-        display: block;
+
+
+    .p-menu-1 > ul {
+        display: none;
+        padding-left: 0;
+        background-color: #aaaaaa;
+    }
+
+    .p-menu-1:hover > ul {
+        display: grid;
         position: absolute;
-        margin-left: 0.1em;
-        left: auto;
+        background-color: #404040;
+    }
+
+    .p-menu-1 > ul > li {
+        background-color: #aaaaaa;
+    }
+
+    .p-menu-2 > ul {
+        display: none;
+        padding-left: 0;
+        background-color: #767676;
+    }
+
+    .p-menu-2:hover > ul {
+        display: grid;
+        position: absolute;
+        margin-top: -1.3em;
+        margin-left: 5em;
+        background-color: #404040;
+    }
+
+    .p-menu-2 > ul > li {
+        background-color: #b8b8b8;
     }
 
 </style>
 <div id="WSTP">
     <ul>
         <li class="p-menu-1">
-            <span>插入</span>
+            <span>常用</span>
             <ul>
-                <li class="p-menu-2">
-                    <span>文字</span>
+                <li class="p-menu-2"><span>字号</span>
                     <ul>
-                        <li>dd</li>
-                        <li>dddd</li>
+                        <li onclick='WIKIDOT.Editor.buttons.heading(event, 1);'>h1</li>
+                        <li onclick='WIKIDOT.Editor.buttons.heading(event, 2);'>h2</li>
+                        <li onclick='WIKIDOT.Editor.buttons.heading(event, 3);'>h3</li>
+                        <li onclick='WIKIDOT.Editor.buttons.heading(event, 4);'>h4</li>
+                        <li onclick='WIKIDOT.Editor.buttons.heading(event, 5);'>h5</li>
+                        <li onclick='WIKIDOT.Editor.buttons.heading(event, 6);'>h6</li>
+                        <li onclick='WDET.paste(`[[size 120%]]`,`[[size]]`)'>相对大小</li>
+                    </ul>
+                </li>
+                <li class="p-menu-2"><span>字样</span>
+                    <ul>
+                        <li onclick='WIKIDOT.Editor.buttons.bold(event);'>粗体</li>
+                        <li onclick='WIKIDOT.Editor.buttons.italic(event);'>斜体</li>
+                        <li onclick='WIKIDOT.Editor.buttons.underline(event);'>下划线</li>
+                        <li onclick='WDET.paste(`##red|`,`##`)'>颜色</li>
+                        <li onclick='WIKIDOT.Editor.buttons.teletype(event);'>等宽字</li>
+                        <li onclick='WDET.paste(`[[span class="ruby"]]`,`[[span class="rt"]]@ruby[[/span]][[/span]]`)'>顶部文字</li>
+                        <li onclick='WIKIDOT.Editor.buttons.superscript(event);'>上标</li>
+                        <li onclick='WIKIDOT.Editor.buttons.subscript(event);'>下标</li>
+                        <li onclick='WIKIDOT.Editor.buttons.raw(event);'>原始文字</li>
+                    </ul>
+                </li>
+                <li class="p-menu-2"><span>快捷内容</span>
+                    <ul>
+                        <li onclick='WIKIDOT.Editor.buttons.hr(event);'>水平线</li>
+                        <li onclick='WDET.paste(`█`)'>黑条</li>
+                        <li onclick='WDET.paste(`[[image @link`,`]]]`)'>图片</li>
+                        <li onclick='WDET.paste(`[[[`,`]]]`)'>链接</li>
+                    </ul>
+                </li>
+                <li class="p-menu-2"><span>结构</span>
+                    <ul>
+                        <li onclick='WDET.paste(`[[=]]\n`,`[[/=]]`)'>居中</li>
+                        <li onclick='WIKIDOT.Editor.buttons.quote(event);'>引用</li>
+                        <li onclick='WIKIDOT.Editor.buttons.toc(event);'>目录</li>
+                        <li onclick='WIKIDOT.Editor.buttons.footnote(event);'>脚注</li>
+                        <li onclick='WIKIDOT.Editor.buttons.tableWizard(event);'>表格</li>
+                        <li onclick='WDET.paste(`\n[[collapsible show=+open hide=-close]]\n`,`\n[[/collapsible]]\n`)'>折叠块
+                        </li>
+                        <li onclick='WDET.paste(`\n[[include :scp-int:component:coltop show=+open|hide=-close]]\n`,`\n[[include :scp-int:component:colend]]\n`)'>多层折叠
+                        </li>
+                        <li onclick='WIKIDOT.Editor.buttons.code(event);'>代码块</li>
+                        <li onclick='WIKIDOT.Editor.buttons.codeWizard(event);'>代码块向导</li>
+                        <li onclick='WIKIDOT.Editor.buttons.numberedList(event);'>有序清单</li>
+                        <li onclick='WIKIDOT.Editor.buttons.bulletedList(event);'>无序清单</li>
+                        <li onclick='WIKIDOT.Editor.buttons.definitionList(event);'>定义清单</li>
+                        <li onclick='WDET.paste(`\n[[tabview]]\n[[tab @tab-name]]\n`,`\n[[/tab]]\n[[/tabview]]\n`)'>Tab view</li>
                     </ul>
                 </li>
             </ul>
         </li>
-        <li>s</li>
+        <li class="p-menu-1"><span>模组</span>
+            <ul>
+                <li onclick='WDET.paste(`[[include component:image-block name=@图源 |caption=@描述]]`)'>插图</li>
+                <li onclick='WDET.paste(`[[module ListUsers users="."]]`,`[[/module]]`)'>ListUser</li>
+                <li onclick='WDET.paste(`[[module ListPages separate="no" tags="@tags" order="created_at"]]`,`\n[[/module]]\n`)'>ListPages</li>
+            </ul>
+        </li>
+        <li class="p-menu-1"><span>插件</span>
+            <ul>
+                <li onclick='WDET.injectLocal("WIE")' title="by Wikidot">编辑器1</li>
+                <li onclick='WDET.injectLocal("WSE")' title="by 7happy7">编辑器2</li>
+            </ul>
+        </li>
     </ul>
 </div>
-</body>
-</html>
-
-</html>
